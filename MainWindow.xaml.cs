@@ -25,16 +25,6 @@ namespace EnterpriseNCC1701X
         {
             InitializeComponent();
 
-
-           
-
-
-
-
-
-
-
-
         }
     }
 }
