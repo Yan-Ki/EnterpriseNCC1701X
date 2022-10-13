@@ -43,13 +43,28 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,10" Grid.Column="1"/>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,10">
+        
+        <ListBox 
+            Grid.Column="2" 
+            ItemsSource="{Binding Products}" DisplayMemberPath="Name"
+            
+            />
+
+        <ListBox 
+            x:Name="ListBoxTable"
+             ItemsSource="{Binding ComponentOrders}" DisplayMemberPath="Code"
+            Grid.Column="1" Margin="10,10,26,10"
+                 />
+
+        <ListView  ItemsSource="{Binding NameTables}"
+                   MouseDoubleClick="MesInput_MouseDoubleClick" 
+                   SelectedItem="{Binding SelectedItem}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
+
         </ListView>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
@@ -65,10 +80,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="1" Text="{Binding NewName}" />
-            <TextBox Grid.Row="3"/>
-            <TextBox Grid.Row="4"/>
-            <TextBox Grid.Row="5"/>
+            <TextBox Grid.Row="1" Text="{Binding NewNameProduct}"/>
+            <TextBox Grid.Row="3" Text="{Binding NewNameComponent}"/>
+            <TextBox Grid.Row="4" Text="{Binding Price}"/>
+            <TextBox Grid.Row="5"  Text="{Binding DataPrice}"/>
             <TextBlock Grid.Row="0" 
                 Text="Добавление изделия" 
                        Grid.ColumnSpan="2" 
@@ -84,7 +99,7 @@
             <Button Content="Добавить" 
                     Grid.Row="3" 
                     Grid.Column="1"
-                    Command="{Binding AddMaterial}"/>
+                    Command="{Binding AddComponent}"/>
         </Grid>
 
 
@@ -98,8 +113,6 @@
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="41*"/>
-
-
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -111,8 +124,7 @@
             <TextBox Grid.Column="0" Grid.Row="6" />
             <Button  Content="Подключение" 
                     Grid.Row="2" 
-                    Grid.Column="1"
-                  />
+                    Grid.Column="1" />
             <TextBlock  Text="Введите имя базы данных, логин и пароль" 
                         Grid.Row="0"                       
                        Grid.ColumnSpan="3" 
@@ -157,28 +169,31 @@
                     Grid.Column="0"/>
             <TextBox Grid.Column="0" Grid.Row="1" />
             <ComboBox  Grid.Row="1" 
-                      Grid.Column="1"   />
+                      Grid.Column="1" 
+                      ItemsSource="{Binding Components}" DisplayMemberPath="Name"
+                       >
+
+            </ComboBox>
             <TextBlock Text="Добавление материала в изделие" 
                        Grid.Row="0" 
                        Grid.ColumnSpan="2" 
-                        HorizontalAlignment="Center"
-                      />
+                        HorizontalAlignment="Center"  />
             <TextBlock Text="Сохранить базу данных в MicrosoftWord" 
                        Grid.Row="3" 
                        Grid.ColumnSpan="3" 
-                        HorizontalAlignment="Center"
-                      />
+                        HorizontalAlignment="Center"/>
 
 
         </Grid>
-
-
-
        
 
 
-        <ListBox Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,10"/>
-      
+
+
+
+
+
+
 
     </Grid>
 </Window>

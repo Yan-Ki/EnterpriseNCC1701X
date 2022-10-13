@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnterpriseNCC1701X.PresentationLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,12 @@ namespace EnterpriseNCC1701X
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
 
+        private void MesInput_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
         }
     }
 }
