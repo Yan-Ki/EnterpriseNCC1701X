@@ -9,7 +9,6 @@ using EnterpriseNCC1701X.Domain;
 using EnterpriseNCC1701X.EntityAccess;
 using EnterpriseNCC1701X.PresentationLogic;
 
-
 namespace EnterpriseNCC1701X
 {
     /// <summary>
@@ -20,7 +19,7 @@ namespace EnterpriseNCC1701X
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            InitializeDB();
+            //InitializeDB();
             //ComponentRepository componentRepository = new ComponentRepository(); 
             MainContext mainContext = new MainContext();
             ProductRepository productlRepository = new ProductRepository(mainContext);
@@ -35,13 +34,16 @@ namespace EnterpriseNCC1701X
         {
             using (MainContext dbContext = new MainContext())
             {
-                Product product1 = dbContext.Products.Add(new Product() { Name = "Корпус" });
-                Product product2 = dbContext.Products.Add(new Product() { Name = "Варп-двигатель" });
-                Product product3 = dbContext.Products.Add(new Product() { Name = "Фазовые излучатели" });
-                Product product4 = dbContext.Products.Add(new Product() { Name = "Щиты зажиты" });
-                Product product5 = dbContext.Products.Add(new Product() { Name = "Система навигации" });
-                dbContext.SaveChanges();
 
+                //Component component1 = dbContext.Components.Add(new Component() { Name = "sdfsdf" });
+
+                Product product1 = dbContext.Products.Add(new Product() { Name = "sdfsdf" });
+                //Product product2 = dbContext.Products.Add(new Product() { Name = "Варп-двигатель" });
+                //Product product3 = dbContext.Products.Add(new Product() { Name = "Фазовые излучатели" });
+                //Product product4 = dbContext.Products.Add(new Product() { Name = "Щиты зажиты" });
+                //Product product5 = dbContext.Products.Add(new Product() { Name = "Система навигации" });
+                dbContext.SaveChanges();
+             
                 //Component component1 = dbContext.Components.Add(new Component() { Name = "Component1" });
                 //Component component2 = dbContext.Components.Add(new Component() { Name = "Component2" });
                 //Component component3 = dbContext.Components.Add(new Component() { Name = "Component3" });

@@ -1,9 +1,8 @@
 ﻿<Application x:Class="EnterpriseNCC1701X.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:EnterpriseNCC1701X"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
+             xmlns:local="clr-namespace:EnterpriseNCC1701X">
+        <Application.Resources>
          
     </Application.Resources>
 </Application>

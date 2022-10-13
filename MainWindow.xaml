@@ -5,16 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnterpriseNCC1701X"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="1000">
+        Title="EnterpriseNCC1701X" 
+        Height="550" 
+        Width="1000"
+        MinHeight="550"
+        MinWidth="1000">
+
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="TextBox" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="Button" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="ComboBox" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="ListView" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="DataGrid" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="52*"/>
             <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="72*"/>
-            <ColumnDefinition Width="73*"/>
-            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,10" Grid.Column="1"/>
         <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,10">
@@ -24,21 +51,134 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox HorizontalAlignment="Left" Margin="10,91,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="10,123,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="10,152,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="18"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Margin="148,37,0,0" Grid.Row="1" VerticalAlignment="Top" Height="20" Width="67"/>
-        <TextBox HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="19,28,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="19,64,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="19,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120" Height="18"/>
-        <Button Grid.Column="1" Content="Button" HorizontalAlignment="Center" Margin="0,27,0,0" Grid.Row="1" VerticalAlignment="Top" Height="20" Width="40"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Margin="148,89,0,0" Grid.Row="1" VerticalAlignment="Top" Height="20" Width="67"/>
-        <ComboBox HorizontalAlignment="Left" Margin="230,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="22"/>
-        <Button Content="Сохранение" HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" VerticalAlignment="Top" Height="20" Width="92" Grid.Column="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Добавление изделия"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="10,69,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Добавление материала"/></TextBlock>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="1" Text="{Binding NewName}" />
+            <TextBox Grid.Row="3"/>
+            <TextBox Grid.Row="4"/>
+            <TextBox Grid.Row="5"/>
+            <TextBlock Grid.Row="0" 
+                Text="Добавление изделия" 
+                       Grid.ColumnSpan="2" 
+                       HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2" 
+                       Text="Добавление материала" 
+                       Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center"/>
+            <Button Content="Добавить" 
+                    Grid.Row="1" 
+                    Grid.Column="1" 
+                    Command="{Binding AddProduct}"/>
+            <Button Content="Добавить" 
+                    Grid.Row="3" 
+                    Grid.Column="1"
+                    Command="{Binding AddMaterial}"/>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="41*"/>
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Grid.Row="2" />
+            <TextBox Grid.Column="0" Grid.Row="4" />
+            <TextBox Grid.Column="0" Grid.Row="6" />
+            <Button  Content="Подключение" 
+                    Grid.Row="2" 
+                    Grid.Column="1"
+                  />
+            <TextBlock  Text="Введите имя базы данных, логин и пароль" 
+                        Grid.Row="0"                       
+                       Grid.ColumnSpan="3" 
+                       HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" 
+                Text="Имя базы данных" 
+                       Grid.ColumnSpan="1" 
+                       HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="3" 
+                Text="Логин" 
+                       Grid.ColumnSpan="1" 
+                       HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" 
+                Text="Пароль" 
+                       Grid.ColumnSpan="1" 
+                       HorizontalAlignment="Center"/>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="40*"/>
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button  Content="Сохранение" 
+                    Grid.Row="4" 
+                    Grid.Column="0"/>
+            <Button  Content="Добавить" 
+                    Grid.Row="2" 
+                    Grid.Column="0"/>
+            <TextBox Grid.Column="0" Grid.Row="1" />
+            <ComboBox  Grid.Row="1" 
+                      Grid.Column="1"   />
+            <TextBlock Text="Добавление материала в изделие" 
+                       Grid.Row="0" 
+                       Grid.ColumnSpan="2" 
+                        HorizontalAlignment="Center"
+                      />
+            <TextBlock Text="Сохранить базу данных в MicrosoftWord" 
+                       Grid.Row="3" 
+                       Grid.ColumnSpan="3" 
+                        HorizontalAlignment="Center"
+                      />
+
+
+        </Grid>
+
+
+
+       
+
+
         <ListBox Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,10"/>
+      
 
     </Grid>
 </Window>
