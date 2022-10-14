@@ -9,7 +9,8 @@
         Height="550" 
         Width="1000"
         MinHeight="550"
-        MinWidth="1000">
+        MinWidth="1000"
+        >
 
 
     <Window.Resources>
@@ -31,6 +32,12 @@
         <Style TargetType="DataGrid" >
             <Setter Property="Margin" Value="3"/>
         </Style>
+        <Style TargetType="DatePicker" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="StackPanel" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -43,25 +50,72 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <ListBox 
-            Grid.Column="2" 
-            ItemsSource="{Binding Products}" DisplayMemberPath="Name"
-            
-            />
 
-        <ListBox 
-            x:Name="ListBoxTable"
-             ItemsSource="{Binding ComponentOrders}" DisplayMemberPath="Code"
-            Grid.Column="1" Margin="10,10,26,10"
-                 />
+        <ListView
+            x:Name="listBoxProduct"
+            Grid.Column="2" 
+            ItemsSource="{Binding Products}" 
+            SelectedItem="{Binding SelectProduct}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding  Id}"/>
+                    <GridViewColumn Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <ScrollViewer
+            Grid.Row="0" 
+            Grid.Column="1" 
+            Grid.RowSpan="2">
+            <StackPanel>
+                <ListView 
+             Visibility="{Binding ProductVis}"
+              ItemsSource="{Binding Products}"
+             Grid.Column="1"    >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding  Id}"/>
+                            <GridViewColumn Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView
+             Visibility="{Binding ComponentVis}"
+             ItemsSource="{Binding Components}" 
+            Grid.Column="1"  >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding  Id}"/>
+                            <GridViewColumn Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView
+             Visibility="{Binding ComponentOrderVis}"               
+             ItemsSource="{Binding ComponentOrders}" 
+             Grid.Column="1"  >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding  Id}"/>
+                            <GridViewColumn Header="Обозначение" DisplayMemberBinding="{Binding Code}"/>
+                            <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
+                            <GridViewColumn Header="Дата закупки" DisplayMemberBinding="{Binding DatePrice}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </StackPanel>
+        </ScrollViewer>
+
 
         <ListView  ItemsSource="{Binding NameTables}"
-                   MouseDoubleClick="MesInput_MouseDoubleClick" 
                    SelectedItem="{Binding SelectedItem}" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Таблицы БД" ></GridViewColumn>
+
                 </GridView>
             </ListView.View>
 
@@ -80,10 +134,14 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="1" Text="{Binding NewNameProduct}"/>
-            <TextBox Grid.Row="3" Text="{Binding NewNameComponent}"/>
-            <TextBox Grid.Row="4" Text="{Binding Price}"/>
-            <TextBox Grid.Row="5"  Text="{Binding DataPrice}"/>
+            <TextBox Grid.Row="1"  Grid.Column="0" Text="{Binding NewNameProduct}"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding NewNameComponent}"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Price}"/>
+            <!--<TextBox Grid.Row="5"  Text="{Binding DatePrice}"/>-->
+            <DatePicker  Grid.Row="5" 
+                         Text="{Binding DatePrice}" 
+                         Grid.Column="1" 
+                        />
             <TextBlock Grid.Row="0" 
                 Text="Добавление изделия" 
                        Grid.ColumnSpan="2" 
@@ -98,49 +156,31 @@
                     Command="{Binding AddProduct}"/>
             <Button Content="Добавить" 
                     Grid.Row="3" 
-                    Grid.Column="1"
+                    Grid.Column="2"
                     Command="{Binding AddComponent}"/>
+            <TextBlock Grid.Row="3" 
+                       Text="Наименование" 
+                        Grid.Column="0"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="4" 
+                       Text="Цена" 
+                        Grid.Column="0"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="5" 
+                       Text="Дата" 
+                        Grid.Column="0"
+                       HorizontalAlignment="Center"/>
+
         </Grid>
 
 
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="41*"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Grid.Row="2" />
-            <TextBox Grid.Column="0" Grid.Row="4" />
-            <TextBox Grid.Column="0" Grid.Row="6" />
-            <Button  Content="Подключение" 
-                    Grid.Row="2" 
-                    Grid.Column="1" />
-            <TextBlock  Text="Введите имя базы данных, логин и пароль" 
-                        Grid.Row="0"                       
-                       Grid.ColumnSpan="3" 
-                       HorizontalAlignment="Center"/>
-            <TextBlock Grid.Row="1" 
-                Text="Имя базы данных" 
-                       Grid.ColumnSpan="1" 
-                       HorizontalAlignment="Center"/>
-            <TextBlock Grid.Row="3" 
-                Text="Логин" 
-                       Grid.ColumnSpan="1" 
-                       HorizontalAlignment="Center"/>
-            <TextBlock Grid.Row="5" 
-                Text="Пароль" 
-                       Grid.ColumnSpan="1" 
-                       HorizontalAlignment="Center"/>
         </Grid>
 
 
@@ -166,13 +206,22 @@
                     Grid.Column="0"/>
             <Button  Content="Добавить" 
                     Grid.Row="2" 
-                    Grid.Column="0"/>
-            <TextBox Grid.Column="0" Grid.Row="1" />
-            <ComboBox  Grid.Row="1" 
+                    Grid.Column="0"
+                    Command="{Binding AddComponentProduct}"/>
+            <TextBox Grid.Column="0" 
+                     Grid.Row="1" 
+                     Text="{Binding SelectProduct.Name}" />
+            <ComboBox 
+                Grid.Row="1" 
                       Grid.Column="1" 
                       ItemsSource="{Binding Components}" DisplayMemberPath="Name"
+                       SelectedItem="{Binding componentComboBox}"
                        >
-
+                <!--<StackPanel>
+                    <TextBlock Text="{Binding Name}">
+                        
+                    </TextBlock>
+                </StackPanel>-->
             </ComboBox>
             <TextBlock Text="Добавление материала в изделие" 
                        Grid.Row="0" 
@@ -185,7 +234,7 @@
 
 
         </Grid>
-       
+
 
 
 

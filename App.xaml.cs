@@ -22,34 +22,31 @@ namespace EnterpriseNCC1701X
     /// </summary>
     public partial class App : Application
     {
+        public static string sqlConnectionString;
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            //InitializeDB();
-            
-            MainContext mainContext = new MainContext();
+                     
+            WindowLogin windowLogin = new WindowLogin();
+            windowLogin.Show();
+                     
+        }
 
+        public static void Start(string sqlConnectionString)
+        {
+            InitializeDB(sqlConnectionString);
+            MainContext mainContext = new MainContext(sqlConnectionString);
             ProductRepository productRepository = new ProductRepository(mainContext);
             ComponentRepository componentRepository = new ComponentRepository(mainContext);
             ComponentOrderRepository componentOrderRepository = new ComponentOrderRepository(mainContext);
-
-            MainWindow window = new MainWindow();
-
-
             MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(productRepository, componentRepository, componentOrderRepository, mainContext);
-         
-           // MainWindow window = new MainWindow();
+            MainWindow window = new MainWindow();
             window.DataContext = mainWindowViewModel;
             window.Show();
-            //window.ListBoxTable.ItemsSource=mainWindowViewModel.Products;
-
-
         }
-
-
-        private static void InitializeDB()
+        private static void InitializeDB(string sqlConnectionString)
         {
-            using (MainContext dbContext = new MainContext())
+            using (MainContext dbContext = new MainContext(sqlConnectionString))
             {
 
                 Product product1 = dbContext.Products.Add(new Product() { Name = "Корпус" });
@@ -71,18 +68,16 @@ namespace EnterpriseNCC1701X
                 Component component10 = dbContext.Components.Add(new Component() { Name = "Подшипники" });
                 dbContext.SaveChanges();
 
-
-
-                ComponentOrder comp1 = new ComponentOrder() { Code = "Швеллер 20У 12м", Price = 23690, DataPrice = "23.08.2089" };
-                ComponentOrder comp2 = new ComponentOrder() { Code = "Лист 09Г2С 20х6000х6000", Price = 12900, DataPrice = "25.08.2089" };
-                ComponentOrder comp3 = new ComponentOrder() { Code = "Лист 12Х18Н10Т 8х6000х6000", Price = 23690, DataPrice = "23.08.2089" };
-                ComponentOrder comp4 = new ComponentOrder() { Code = "Двутавр 20 12м", Price = 15450, DataPrice = "25.08.2089" };
-                ComponentOrder comp5 = new ComponentOrder() { Code = "Пруток 15х6000", Price = 31580, DataPrice = "26.08.2089" };
-                ComponentOrder comp6 = new ComponentOrder() { Code = "Кабель силовой 20м", Price = 23690, DataPrice = "23.08.2089" };
-                ComponentOrder comp7 = new ComponentOrder() { Code = "Шкафы силовые", Price = 160567, DataPrice = "13.09.2089" };
-                ComponentOrder comp8 = new ComponentOrder() { Code = "Блоки предохранителей", Price = 180990, DataPrice = "17.10.2089" };
-                ComponentOrder comp9 = new ComponentOrder() { Code = "Вентили запорные", Price = 260895, DataPrice = "06.10.2089" };
-                ComponentOrder comp10 = new ComponentOrder() { Code = "Подшипники", Price = 670857, DataPrice = "21.10.2089" };
+                ComponentOrder comp1 = new ComponentOrder() { Code = "Швеллер 20У 12м", Price = 23690, DatePrice = new DateTime(2089, 08, 12) };
+                ComponentOrder comp2 = new ComponentOrder() { Code = "Лист 09Г2С 20х6000х6000", Price = 12900, DatePrice = new DateTime(2089, 08, 07) };
+                ComponentOrder comp3 = new ComponentOrder() { Code = "Лист 12Х18Н10Т 8х6000х6000", Price = 23690, DatePrice = new DateTime(2089,08,23) };
+                ComponentOrder comp4 = new ComponentOrder() { Code = "Двутавр 20 12м", Price = 15450, DatePrice = new DateTime(2089, 08, 15) };
+                ComponentOrder comp5 = new ComponentOrder() { Code = "Пруток 15х6000", Price = 31580, DatePrice = new DateTime(2089, 08, 16) };
+                ComponentOrder comp6 = new ComponentOrder() { Code = "Кабель силовой 20м", Price = 23690, DatePrice = new DateTime(2089, 08, 17) };
+                ComponentOrder comp7 = new ComponentOrder() { Code = "Шкафы силовые", Price = 160567, DatePrice = new DateTime(2089, 08, 24) };
+                ComponentOrder comp8 = new ComponentOrder() { Code = "Блоки предохранителей", Price = 180990, DatePrice = new DateTime(2089, 08, 23) };
+                ComponentOrder comp9 = new ComponentOrder() { Code = "Вентили запорные", Price = 260895, DatePrice = new DateTime(2089, 08, 21) };
+                ComponentOrder comp10 = new ComponentOrder() { Code = "Подшипники", Price = 670857, DatePrice = new DateTime(2089, 08, 22) };
                 dbContext.SaveChanges();
 
                 component1.Order = comp1;

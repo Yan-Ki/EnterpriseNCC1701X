@@ -10,29 +10,32 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace EnterpriseNCC1701X
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для WindowLogin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WindowLogin : Window
     {
-        public MainWindow()
+        public WindowLogin()
         {
-            InitializeComponent();         
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            App.Start("Data Source=(localdb)\\MSSQLLocalDb;Initial Catalog=NCC1701XDB;Integrated Security=True;Pooling=False"); 
+            this.Close();
+        }
 
-           
-
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            App.Start($"Data Source=(localdb)\\MSSQLLocalDb;Initial Catalog={NameDB};User ID={Login};Password={Password};Pooling=False");
+            this.Close();
         }
     }
 }
