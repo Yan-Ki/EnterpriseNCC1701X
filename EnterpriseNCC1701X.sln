@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseNCC1701X.EntityAc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseNCC1701X.PresentationLogic", "..\EnterpriseNCC1701X.PresentationLogic\EnterpriseNCC1701X.PresentationLogic.csproj", "{507AF0E0-E424-449E-A456-855F14D096AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordExport", "..\WordExport\WordExport.csproj", "{71AE4187-E171-4BD6-B767-F2223059D2CC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{507AF0E0-E424-449E-A456-855F14D096AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{507AF0E0-E424-449E-A456-855F14D096AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{507AF0E0-E424-449E-A456-855F14D096AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71AE4187-E171-4BD6-B767-F2223059D2CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71AE4187-E171-4BD6-B767-F2223059D2CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71AE4187-E171-4BD6-B767-F2223059D2CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71AE4187-E171-4BD6-B767-F2223059D2CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

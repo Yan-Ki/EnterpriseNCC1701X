@@ -25,14 +25,10 @@ namespace EnterpriseNCC1701X
     {
         public MainWindow()
         {
-            InitializeComponent();         
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            InitializeComponent();
            
-
         }
+
+        
     }
 }

@@ -9,9 +9,7 @@
         Height="550" 
         Width="1000"
         MinHeight="550"
-        MinWidth="1000"
-        >
-
+        MinWidth="1000" >
 
     <Window.Resources>
         <Style TargetType="TextBlock" >
@@ -77,7 +75,6 @@
                         <GridView>
                             <GridViewColumn Header="ID" DisplayMemberBinding="{Binding  Id}"/>
                             <GridViewColumn Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
-
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -105,17 +102,14 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
             </StackPanel>
         </ScrollViewer>
-
 
         <ListView  ItemsSource="{Binding NameTables}"
                    SelectedItem="{Binding SelectedItem}" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Таблицы БД" ></GridViewColumn>
-
+                    <GridViewColumn Header="Таблицы в БД" ></GridViewColumn>
                 </GridView>
             </ListView.View>
 
@@ -137,11 +131,9 @@
             <TextBox Grid.Row="1"  Grid.Column="0" Text="{Binding NewNameProduct}"/>
             <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding NewNameComponent}"/>
             <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Price}"/>
-            <!--<TextBox Grid.Row="5"  Text="{Binding DatePrice}"/>-->
             <DatePicker  Grid.Row="5" 
                          Text="{Binding DatePrice}" 
-                         Grid.Column="1" 
-                        />
+                         Grid.Column="1"/>
             <TextBlock Grid.Row="0" 
                 Text="Добавление изделия" 
                        Grid.ColumnSpan="2" 
@@ -170,10 +162,7 @@
                        Text="Дата" 
                         Grid.Column="0"
                        HorizontalAlignment="Center"/>
-
         </Grid>
-
-
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -182,8 +171,6 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
         </Grid>
-
-
         <Grid Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20*"/>
@@ -192,18 +179,16 @@
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="40*"/>
-
-
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <Button  Content="Сохранение" 
                     Grid.Row="4" 
-                    Grid.Column="0"/>
+                    Grid.Column="0"
+                     Command="{Binding WordExportData}"/>
             <Button  Content="Добавить" 
                     Grid.Row="2" 
                     Grid.Column="0"
@@ -215,13 +200,7 @@
                 Grid.Row="1" 
                       Grid.Column="1" 
                       ItemsSource="{Binding Components}" DisplayMemberPath="Name"
-                       SelectedItem="{Binding componentComboBox}"
-                       >
-                <!--<StackPanel>
-                    <TextBlock Text="{Binding Name}">
-                        
-                    </TextBlock>
-                </StackPanel>-->
+                       SelectedItem="{Binding ComponentComboBox}"   >
             </ComboBox>
             <TextBlock Text="Добавление материала в изделие" 
                        Grid.Row="0" 
@@ -231,18 +210,6 @@
                        Grid.Row="3" 
                        Grid.ColumnSpan="3" 
                         HorizontalAlignment="Center"/>
-
-
         </Grid>
-
-
-
-
-
-
-
-
-
-
     </Grid>
 </Window>

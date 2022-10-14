@@ -5,7 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnterpriseNCC1701X"
         mc:Ignorable="d"
-        Title="WindowLogin" Height="200" Width="300">
+        Title="WindowLogin" 
+        Height="250" 
+        Width="350"
+        MinHeight="250"
+        MinWidth="350">
+    <Window.Resources>
+        <Style TargetType="TextBlock" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="TextBox" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="Button" >
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+       
+        
+       
+      
+        
+      
+    </Window.Resources>
     <Grid>
         <StackPanel>
             <TextBlock 
@@ -24,11 +45,10 @@
            />
             <TextBox x:Name="Password"
             />
-            <Button  Content="Подключение к базе с логином и паролем" Click="Button_Click_1" 
+            <Button  Content="Подключение к базе с логином и паролем" Click="Button_Click_1"  Margin="30,5"
              />
-            <TextBox x:Name="Pas"
-            />
-            <Button  Content="Подключение" Click="Button_Click" 
+           
+            <Button  Content="Подключение" Click="Button_Click" Margin="50,5"
              />
 
 
